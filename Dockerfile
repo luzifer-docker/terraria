@@ -14,8 +14,11 @@ RUN mkdir -p ${SERVER} \
  && wget -O - http://terraria.org/server/terraria-server-linux-${TERRARIA_VERISON}.tar.gz | tar -C ${SERVER} -xvz \
  && ln -s ${SERVER}/terraria-server-linux-* ${SERVER}/server
 
+ADD config.ini ${SERVER}/config.ini.default
+ADD start.sh ${SERVER}/start.sh
+
 VOLUME /data
 EXPOSE 7777/udp 7777
 
-ENTRYPOINT ["/home/gameserver/terraria/server/TerrariaServer.bin.x86_64"]
-CMD ["-config", "/data/config.ini", "-steam", "-secure"]
+ENTRYPOINT ["/home/gameserver/terraria/start.sh"]
+CMD ["--"]
