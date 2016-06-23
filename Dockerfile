@@ -1,18 +1,20 @@
 FROM ubuntu
 
-ENV TERRARIA_VERISON=1308
+ENV TERRARIA_VERISON=1311
 
 RUN apt-get update \
- && apt-get install -y wget bash \
- && adduser gameserver
+ && apt-get install -y bash curl unzip \
+ && adduser gameserver \
+ && mkdir /data && chown gameserver: /data
 
 USER gameserver
 ENV HOME /home/gameserver
 ENV SERVER $HOME/terraria
 
 RUN mkdir -p ${SERVER} \
- && wget -O - http://terraria.org/server/terraria-server-linux-${TERRARIA_VERISON}.tar.gz | tar -C ${SERVER} -xvz \
- && ln -s ${SERVER}/terraria-server-linux-* ${SERVER}/server
+ && curl -sSLo /tmp/terraria.zip http://terraria.org/server/terraria-server-${TERRARIA_VERISON}.zip \
+ && unzip -d ${SERVER} /tmp/terraria.zip \
+ && ln -s ${SERVER}/terraria-server-* ${SERVER}/server
 
 ADD config.ini ${SERVER}/config.ini.default
 ADD start.sh ${SERVER}/start.sh
