@@ -1,6 +1,6 @@
 FROM ubuntu
 
-ENV TERRARIA_VERISON=1311
+ENV TERRARIA_VERISON=1344
 
 RUN apt-get update \
  && apt-get install -y bash curl unzip \
