@@ -3,7 +3,7 @@ FROM debian:stretch
 ENV TERRARIA_VERISON=1353 \
     DUMB_INIT_VERSION=1.2.1 \
     GOSU_VERSION=1.10 \
-    TERRARIA_DOCKER_VERSION=v0.2.0 \
+    TERRARIA_DOCKER_VERSION=v0.3.0 \
     HOME=/home/gameserver \
     SERVER=/home/gameserver/terraria
 
