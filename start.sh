@@ -16,5 +16,5 @@ chown -R gameserver:gameserver /data
 # Cleanup fifo if already exists
 [ -e /home/gameserver/terraria_cmd ] && rm -f /home/gameserver/terraria_cmd
 
-exec /usr/local/bin/gosu gameserver terraria-docker -- \
+exec /usr/local/bin/gosu gameserver terraria-docker_linux_amd64 -- \
 	${SERVER_BINARY} -config /data/config.ini "$@"
