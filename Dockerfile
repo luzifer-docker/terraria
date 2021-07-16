@@ -1,6 +1,6 @@
 FROM debian:stretch
 
-ENV TERRARIA_VERISON=1353 \
+ENV TERRARIA_VERSION=1423 \
     DUMB_INIT_VERSION=1.2.1 \
     GOSU_VERSION=1.10 \
     TERRARIA_DOCKER_VERSION=v0.3.0 \
@@ -23,7 +23,7 @@ RUN set -ex \
       /usr/local/bin/dumb-init \
       /usr/local/bin/gosu \
  && mkdir -p ${SERVER} \
- && curl -sSfLo /tmp/terraria.zip "http://terraria.org/server/terraria-server-${TERRARIA_VERISON}.zip" \
+ && curl -sSfLo /tmp/terraria.zip "https://terraria.org/api/download/pc-dedicated-server/terraria-server-${TERRARIA_VERSION}.zip" \
  && unzip -d ${SERVER} /tmp/terraria.zip \
  && chown -R gameserver:gameserver ${SERVER} \
  && rm /tmp/terraria.zip \
